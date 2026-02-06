@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You</title>
+
+<style>
+  body {
+    background-color: #fff0f5;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding-top: 80px;
+    overflow: hidden;
+  }
+
+  .bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    font-family: monospace;
+    font-size: 16px;
+    color: #cc6699;
+    opacity: 0.25;
+    white-space: pre;
+  }
+
+  button {
+    font-size: 20px;
+    padding: 12px 25px;
+    margin: 15px;
+    cursor: pointer;
+  }
+
+  #noRun {
+    position: absolute;
+  }
+
+  pre {
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.05;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="bg">
+<3      *      <3      *      <3      *      <3
+   *        <3       *        <3       *
+<3      *      <3      *      <3      *      <3
+   *        <3       *        <3       *
+<3      *      <3      *      <3      *      <3
+</div>
+
+<div id="app"></div>
+
+<script>
+const app = document.getElementById("app");
+
+function page1() {
+  app.innerHTML = `
+    <h1>Are you a true cutie patootie?</h1>
+    <p>If yes, this message is for you</p>
+    <button onclick="page2()">Yes</button>
+    <button onclick="page1_no()">No</button>
+  `;
+}
+
+function page1_no() {
+  app.innerHTML = `
+    <h1>Are you sure?</h1>
+    <p>Because I know you are one.</p>
+    <button onclick="page2()">Well I guess you're right</button>
+  `;
+}
+
+function page2() {
+  app.innerHTML = `
+    <h1>I wanted to say something to you</h1>
+    <p>Would you like to hear me?</p>
+    <button onclick="page3()">Yes</button>
+    <button id="noRun">No</button>
+  `;
+
+  const noBtn = document.getElementById("noRun");
+  noBtn.addEventListener("mouseover", moveNo);
+  noBtn.addEventListener("touchstart", moveNo);
+
+  function moveNo() {
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 60);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  }
+}
+
+function page3() {
+  app.innerHTML = `
+    <h1>
+      This is a little embarrassing to ask, but<br><br>
+      will you be my Valentine?
+    </h1>
+    <button onclick="page4()">Yes</button>
+    <button onclick="page4()">Yes</button>
+  `;
+}
+
+function page4() {
+  app.innerHTML = `
+    <h1>YAAAAAAAAAY</h1>
+    <pre>
+          @@@@@@@@@@@@@@@@@@@@@@@@@
+       @@@@                         @@@@
+    @@@@        O             O        @@@@
+  @@@@                                       @@@@
+ @@@@            \\___________/                @@@@
+ @@@@             \\_________/                 @@@@
+  @@@@                                       @@@@
+    @@@@           \\_____/                 @@@@
+       @@@@                               @@@@
+          @@@@@@@@@@@@@@@@@@@@@@@@@
+
+                 ^^^^^^^^^^^^^^^
+                 I AM SO HAPPY
+                 ^^^^^^^^^^^^^^^
+
+              <3   *   <3   *   <3
+                 *   <3   *
+              <3   *   <3   *   <3
+    </pre>
+  `;
+}
+
+page1();
+</script>
+
+</body>
+</html>
